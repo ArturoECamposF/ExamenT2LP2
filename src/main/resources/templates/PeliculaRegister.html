@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Pelicula</title>
+    <!-- Agregar la referencia a los archivos CSS de Bootstrap (localmente o a través de CDN) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	
+    <div class="container mt-5">
+        <h1 class="mt-5">Registro de Pelicula</h1>
+        <form action="/pelicula/register" method="post">
+            <div class="form-group">
+                <label for="nombrePelicula">Nombre del Pelicula</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Ingrese el nombre del producto" required>
+            </div>
+            <div class="form-group">
+                <label for="directorPelicula">Director de la pelicula</label>
+                <input type="text" class="form-control" id="name" name="director" placeholder="Ingrese director" required>
+            </div>            
+            <div class="form-group">
+                <label for="fechaestrenoPelicula">Fecha de estreno de la pelicula</label>
+                <input type="text" class="form-control" id="name" name="fechaestreno" placeholder="Ingrese fecha de estreno" required>
+            </div>                       
+            <div class="form-group">
+				<label for="generoPelicula">Genero</label>
+				<select class="form-control" name="id">
+				    <option th:each="genero: ${generos}" th:value="${genero.idgenero}" th:text="${genero.nombre}"></option>
+				</select>
+			</div>
+
+            <button type="submit" class="btn btn-primary">Registrar Pelicula</button>
+        </form>
+    </div>
+    
+    <!-- Agregar la referencia a los archivos JavaScript de Bootstrap (localmente o a través de CDN) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

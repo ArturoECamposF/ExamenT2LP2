@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Peliculas</title>
+    <!-- Agregar la referencia a los archivos CSS de Bootstrap (localmente o a través de CDN) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+	
+	
+    <div class="container mt-5">
+        <h1 class="mt-5">Listado de Peliculas</h1>
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <form action="/pelicula/register" method="get">
+                    <button type="submit" class="btn btn-primary">Registrar Peliculas</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+			<div class="col-md-1">
+                <h5>Id</h5>
+            </div>
+            <div class="col-md-2">
+                <h5>Nombre </h5>
+            </div>
+            <div class="col-md-2">
+                <h5>Director</h5>
+            </div>
+             <div class="col-md-2">
+                <h5>Fecha de Estreno</h5>
+            </div>
+            <div class="col-md-2">
+                <h5>Genero</h5>
+            </div>
+            <div class="col-md-3">
+                <h5>Acciones</h5>
+            </div>
+        </div>
+        <div class="list-group">
+            <!-- Iterar sobre la lista de personas y mostrar cada una -->
+            <div th:each="pelicula : ${peliculas}" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-1" th:text="${pelicula.id}"></div>
+                    <div class="col-md-2" th:text="${pelicula.nombre}"></div>
+                    <div class="col-md-2" th:text="${pelicula.director}"></div>
+                    <div class="col-md-2" th:text="${pelicula.fechaestreno}"></div>
+                    <div class="col-md-2" th:text="${pelicula.genero.nombre}"></div>
+                    <div class="col-md-1">						
+						
+						<a th:href="@{'/pelicula/edit/' + ${pelicula.id} }" class="btn btn-warning">Editar</a>
+
+					</div>
+					
+					<div class="col-md-1">						
+		                
+		                <a th:href="@{'/pelicula/delete/' + ${pelicula.id} }" 
+		                	onclick="return confirm('¿Está seguro de eliminar?');"
+		                	class="btn btn-danger">Eliminar</a>
+		                
+					</div>
+					
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Agregar la referencia a los archivos JavaScript de Bootstrap (localmente o a través de CDN) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
